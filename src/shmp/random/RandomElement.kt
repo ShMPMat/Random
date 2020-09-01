@@ -87,15 +87,15 @@ fun <E : SampleSpaceObject> randomElement(list: List<E>, random: Random): E =
     randomElement(list, { it.probability }, random)
 
 
-fun <T, E : GenericSSO<T>> randomUnwrappedElementOrNull(array: Array<E>, random: Random): T? =
-    randomElementOrNull(array, { it.probability }, random)?.item
+fun <T, E : UnwrappableSSO<T>> randomUnwrappedElementOrNull(array: Array<E>, random: Random): T? =
+    randomElementOrNull(array, { it.probability }, random)?.value
 
-fun <T, E : GenericSSO<T>> randomUnwrappedElement(array: Array<E>, random: Random): T =
-    randomElement(array, { it.probability }, random).item
+fun <T, E : UnwrappableSSO<T>> randomUnwrappedElement(array: Array<E>, random: Random): T =
+    randomElement(array, { it.probability }, random).value
 
 
-fun <T, E : GenericSSO<T>> randomUnwrappedElementOrNull(list: List<E>, random: Random): T? =
-    randomElementOrNull(list, { it.probability }, random)?.item
+fun <T, E : UnwrappableSSO<T>> randomUnwrappedElementOrNull(list: List<E>, random: Random): T? =
+    randomElementOrNull(list, { it.probability }, random)?.value
 
-fun <T, E : GenericSSO<T>> randomUnwrappedElement(list: List<E>, random: Random): T =
-    randomElement(list, { it.probability }, random).item
+fun <T, E : UnwrappableSSO<T>> randomUnwrappedElement(list: List<E>, random: Random): T =
+    randomElement(list, { it.probability }, random).value
