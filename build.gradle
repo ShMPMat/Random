@@ -4,10 +4,6 @@ plugins {
 apply plugin: 'idea'
 apply plugin: 'java'
 
-wrapper {
-    gradleVersion = '6.8.1'
-}
-
 sourceSets {
     main.kotlin.srcDirs += 'src/'
 }
