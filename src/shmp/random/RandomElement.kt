@@ -31,27 +31,6 @@ inline fun <E> randomElement(list: List<E>, mapper: (E) -> Double, random: Rando
         ?: throw RandomException("Can't choose an element from an empty collection")
 
 
-inline fun <E> randomElementOrNull(iterable: Iterable<E>, mapper: (E) -> Double, random: Random): E? {
-    val probabilities = iterable.map(mapper)
-    var result = random.nextDouble() * probabilities.fold(0.0, Double::plus)
-
-    for ((i, element) in iterable.withIndex()) {
-        val probability = probabilities[i]
-
-        if (result <= probability)
-            return element
-
-        result -= probability
-    }
-
-    return null
-}
-
-inline fun <E> randomElement(iterable: Iterable<E>, mapper: (E) -> Double, random: Random) =
-    randomElementOrNull(iterable, mapper, random)
-        ?: throw RandomException("Can't choose an element from an empty collection")
-
-
 inline fun <E> randomElementOrNull(array: Array<E>, mapper: (E) -> Double, random: Random): E? {
     val probabilities = array.map(mapper)
     var result = random.nextDouble() * probabilities.fold(0.0, Double::plus)
