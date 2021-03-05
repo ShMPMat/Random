@@ -9,3 +9,8 @@ inline fun Double.chanceOf(block: () -> Unit) {
     if (this.testProbability())
         block()
 }
+
+inline fun Double.chanceOfNot(block: () -> Unit) {
+    if (!this.testProbability())
+        block()
+}
