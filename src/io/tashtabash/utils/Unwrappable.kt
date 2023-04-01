@@ -1,4 +1,4 @@
-package shmp.utils
+package io.tashtabash.utils
 
 
 interface Unwrappable<E> {

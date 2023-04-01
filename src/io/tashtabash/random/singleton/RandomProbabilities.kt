@@ -1,7 +1,7 @@
-package shmp.random.singleton
+package io.tashtabash.random.singleton
 
-import shmp.random.singleton.Success.*
-import shmp.random.testProbability
+import io.tashtabash.random.singleton.Success.*
+import io.tashtabash.random.testProbability
 
 
 fun Double.testProbability() = testProbability(this, RandomSingleton.random)

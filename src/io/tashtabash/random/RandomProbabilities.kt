@@ -1,4 +1,4 @@
-package shmp.random
+package io.tashtabash.random
 
 import kotlin.random.Random
 

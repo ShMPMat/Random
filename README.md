@@ -6,8 +6,8 @@ This is a small library with a number of functions working with randomness.
 
 There are two types of functions defined in two packages:
 
-- `shmp.random` - use explicitly provided `kotlin.random.Random`;
-- `shmp.random.singleton` implicitly use `Random` from `shmp.random.singleton.RandomSingleton`, 
+- `io.tashtabash.random` - use explicitly provided `kotlin.random.Random`;
+- `io.tashtabash.random.singleton` implicitly use `Random` from `io.tashtabash.random.singleton.RandomSingleton`, 
 which has to be initialized at the start of your app; tightly coupled but more DSL-like.
 
 ## Examples

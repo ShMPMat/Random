@@ -1,4 +1,4 @@
-package shmp.random.singleton
+package io.tashtabash.random.singleton
 
 
 object RandomUninitializedException: Exception("RandomSingleton.random is not initialized")

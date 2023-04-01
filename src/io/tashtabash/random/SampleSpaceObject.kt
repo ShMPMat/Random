@@ -1,6 +1,6 @@
-package shmp.random
+package io.tashtabash.random
 
-import shmp.utils.Unwrappable
+import io.tashtabash.utils.Unwrappable
 
 
 interface SampleSpaceObject {
