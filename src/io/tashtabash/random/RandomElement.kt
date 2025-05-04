@@ -12,7 +12,10 @@ fun <E> randomElement(list: List<E>, random: Random) = list[random.nextInt(list.
 
 inline fun <E> randomElementOrNull(list: List<E>, mapper: (E) -> Double, random: Random): E? {
     val probabilities = list.map(mapper)
-    var result = random.nextDouble() * probabilities.fold(0.0, Double::plus)
+    val probabilitiesSum = probabilities.sum()
+    if (probabilitiesSum == 0.0)
+        return null
+    var result = random.nextDouble() * probabilitiesSum
 
     for (i in probabilities.indices) {
         val probability = probabilities[i]
@@ -33,7 +36,10 @@ inline fun <E> randomElement(list: List<E>, mapper: (E) -> Double, random: Rando
 
 inline fun <E> randomElementOrNull(array: Array<E>, mapper: (E) -> Double, random: Random): E? {
     val probabilities = array.map(mapper)
-    var result = random.nextDouble() * probabilities.fold(0.0, Double::plus)
+    val probabilitiesSum = probabilities.sum()
+    if (probabilitiesSum == 0.0)
+        return null
+    var result = random.nextDouble() * probabilitiesSum
 
     for (i in probabilities.indices) {
         val probability = probabilities[i]
