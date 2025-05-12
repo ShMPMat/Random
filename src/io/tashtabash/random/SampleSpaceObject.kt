@@ -12,7 +12,16 @@ abstract class UnwrappableSSO<E>(override val value: E): SampleSpaceObject, Unwr
 
 open class GenericSSO<E>(value: E, override val probability: Double): UnwrappableSSO<E>(value)
 
-fun <E> E.toSampleSpaceObject(probability: Double) = GenericSSO(this, probability)
+fun <E> E.toSampleSpaceObject(prob: Double) = GenericSSO(this, prob)
 
-infix fun <E> E.withProbability(probability: Double): GenericSSO<E> =
-    GenericSSO(this, probability)
+infix fun <E> E.withProb(prob: Double): GenericSSO<E> =
+    GenericSSO(this, prob)
+
+infix fun <E> List<E>.allWithProb(prob: Double): List<GenericSSO<E>> =
+    map { it withProb prob }
+
+infix fun <E> List<E>.allWithProb(mapper: (E) -> Double): List<GenericSSO<E>> =
+    map { it withProb mapper(it) }
+
+infix fun <E> List<E>.allWithProb(mapper: (Int, E) -> Double): List<GenericSSO<E>> =
+    mapIndexed { i, e -> e withProb mapper(i, e) }

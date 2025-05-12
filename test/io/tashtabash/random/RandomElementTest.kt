@@ -16,9 +16,9 @@ class RandomElementTest {
             assertEquals(
                 null,
                 listOf(
-                    1 withProbability 0.0,
-                    2 withProbability 0.0,
-                    3 withProbability 0.0
+                    1 withProb 0.0,
+                    2 withProb 0.0,
+                    3 withProb 0.0
                 ).randomElementOrNull()
             )
     }
@@ -31,9 +31,9 @@ class RandomElementTest {
             assertEquals(
                 3,
                 listOf(
-                    1 withProbability 0.0,
-                    2 withProbability 0.0,
-                    3 withProbability 0.00001
+                    1 withProb 0.0,
+                    2 withProb 0.0,
+                    3 withProb 0.00001
                 ).randomElementOrNull()?.value
             )
     }
