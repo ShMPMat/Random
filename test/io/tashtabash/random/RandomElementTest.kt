@@ -2,6 +2,7 @@ package io.tashtabash.random
 
 import io.tashtabash.random.singleton.RandomSingleton
 import io.tashtabash.random.singleton.randomElementOrNull
+import io.tashtabash.random.singleton.randomUnwrappedElementOrNull
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import kotlin.random.Random
@@ -36,5 +37,24 @@ class RandomElementTest {
                     3 withProb 0.00001
                 ).randomElementOrNull()?.value
             )
+    }
+
+    @Test
+    fun `randomElementOrNull() can handle object hierarchies`() {
+        RandomSingleton.safeRandom = Random(Random.nextInt())
+
+        for (i in 0..1000)
+            assertEquals(
+                TestEnum.A,
+                listOf(
+                    TestEnum.A withProb 1.0,
+                    TestEnum.B withProb 0.0,
+                ).randomUnwrappedElementOrNull()
+            )
+    }
+
+    sealed class TestEnum {
+        data object A : TestEnum()
+        data object B : TestEnum()
     }
 }

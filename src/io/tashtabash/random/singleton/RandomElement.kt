@@ -37,15 +37,15 @@ fun <E : SampleSpaceObject> List<E>.randomElement(): E =
     io.tashtabash.random.randomElement(this, RandomSingleton.random)
 
 
-fun <T, E : UnwrappableSSO<T>> Array<E>.randomUnwrappedElementOrNull(): T? =
+    fun <T, E : UnwrappableSSO<out T>> Array<E>.randomUnwrappedElementOrNull(): T? =
     io.tashtabash.random.randomUnwrappedElementOrNull(this, RandomSingleton.random)
 
-fun <T, E : UnwrappableSSO<T>> Array<E>.randomUnwrappedElement(): T =
+fun <T, E : UnwrappableSSO<out T>> Array<E>.randomUnwrappedElement(): T =
     io.tashtabash.random.randomUnwrappedElement(this, RandomSingleton.random)
 
 
-fun <T, E : UnwrappableSSO<T>> List<E>.randomUnwrappedElementOrNull(): T? =
+fun <T, E : UnwrappableSSO<out T>> List<E>.randomUnwrappedElementOrNull(): T? =
     io.tashtabash.random.randomUnwrappedElementOrNull(this, RandomSingleton.random)
 
-fun <T, E : UnwrappableSSO<T>> List<E>.randomUnwrappedElement(): T =
+fun <T, E : UnwrappableSSO<out T>> List<E>.randomUnwrappedElement(): T =
     io.tashtabash.random.randomUnwrappedElement(this, RandomSingleton.random)

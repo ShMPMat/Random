@@ -10,7 +10,7 @@ interface SampleSpaceObject {
 
 abstract class UnwrappableSSO<E>(override val value: E): SampleSpaceObject, Unwrappable<E>
 
-open class GenericSSO<E>(value: E, override val probability: Double): UnwrappableSSO<E>(value)
+data class GenericSSO<E>(override val value: E, override val probability: Double): UnwrappableSSO<E>(value)
 
 fun <E> E.toSampleSpaceObject(prob: Double) = GenericSSO(this, prob)
 
