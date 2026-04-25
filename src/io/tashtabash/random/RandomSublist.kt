@@ -20,27 +20,28 @@ fun <E> randomSublist(
     mapper: (E) -> Double,
     random: Random,
     min: Int = 0,
-    max: Int = list.map(mapper).count { it > 0.0 }
+    max: Int = list.map(mapper).count { it > 0.0 } + 1
 ): List<E> {
     if (list.isEmpty())
         throw RandomException("Can't choose an element from an empty collection")
-    val resultList = ArrayList<E>()
-    val size = random.nextInt(min, max)
-    val probabilities = list.map(mapper).toMutableList()
-    val probabilitySum = probabilities.fold(0.0, Double::plus)
-    var sum = random.nextDouble() * probabilitySum
 
-    for (i in 1..size) {
-        var currentSum = sum
+    val resultList = mutableListOf<E>()
+    val resultSize = random.nextInt(min, max)
+
+    val probabilities = list.map(mapper).toMutableList()
+    var probabilitySum = probabilities.sum()
+
+    for (i in 1..resultSize) {
+        var draw = random.nextDouble() * probabilitySum
         for (j in probabilities.indices) {
             val probability = probabilities[j]
-            if (currentSum <= probability) {
+            if (draw <= probability) {
                 resultList.add(list[j])
-                sum -= probabilities[j]
-                probabilities[j] = 0.0
+                probabilitySum -= probabilities[j]
+                probabilities[j] = .0
                 break
             }
-            currentSum -= probability
+            draw -= probability
         }
     }
     return resultList
